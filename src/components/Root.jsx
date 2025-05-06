@@ -1,3 +1,5 @@
+import { Outlet } from "react-router";
+import Footer from "./Footer";
 import Navber from "./Navber";
 
 
@@ -5,7 +7,9 @@ const Root = () => {
     return (
         <div>
             
-            <Navber></Navber>
+            <Navber />
+            <Outlet/>
+            <Footer/>
         </div>
   )
 };
