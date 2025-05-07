@@ -22,12 +22,12 @@ const Navber = () => {
     }
 
     return (
-        <nav className="bg-green-800 text-white py-4 md:py-8 sticky top-0 border-b-2 border-green-500">
+        <nav className="bg-black/50 text-white py-4 md:py-8 fixed w-full top-0">
             <div className=" container mx-auto flex items-center justify-between">
                 <h3 className="text-3xl"> React Practice ...</h3>
                 {/* mobail button */}
 
-                <div className="md:hidden">
+                <div className="md:hidden ml-auto">
                     <button onClick={toggleMenu}>
                     {
                         isOpen ?  <IoMdClose />: <FaBars />
@@ -40,19 +40,23 @@ const Navber = () => {
 
                     <li> <Link to={'/'}
                                onClick={() => handleLinkClick('/')}
-                        className={`${activeLink === '/' ? 'text-purple-950' :'hover:text-green-300'}`}> Home</Link></li>
+                        className={`${activeLink === '/' ? 'text-purple-400' : 'hover:text-green-300'}`}> Home</Link></li>
+                    
                     <li> <Link to={'/Products'}
                                onClick={() => handleLinkClick('/Products')}
-                        className={`${activeLink === '/Products' ? 'text-purple-950' :'hover:text-green-300'}`}> Products</Link></li>
+                        className={`${activeLink === '/Products' ? 'text-purple-400' : 'hover:text-green-300'}`}> Products</Link></li>
+                    
                     <li> <Link to={'/About'}
                                onClick={() => handleLinkClick('/About')}
-                        className={`${activeLink === '/About' ? 'text-purple-950' :'hover:text-green-300'}`} > About</Link></li>
+                        className={`${activeLink === '/About' ? 'text-purple-400' : 'hover:text-green-300'}`} > About</Link></li>
+                    
                     <li> <Link to={'/Blogs'}
                                onClick={() => handleLinkClick('/Blogs')}
-                        className={`${activeLink === '/Blogs' ? 'text-purple-950' :'hover:text-green-300'}`} > Blogs</Link></li>
+                        className={`${activeLink === '/Blogs' ? 'text-purple-400' : 'hover:text-green-300'}`} > Blogs</Link></li>
+                    
                     <li> <Link to={'/Contact'}
                                 onClick={() => handleLinkClick('/Contact')}
-                        className={`${activeLink === '/Contact' ? 'text-purple-950' :'hover:text-green-300'}`}> Contact</Link></li>
+                        className={`${activeLink === '/Contact' ? 'text-purple-400' :'hover:text-green-300'}`}> Contact</Link></li>
                    
                   
                 </ul>
