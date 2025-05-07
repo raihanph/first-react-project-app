@@ -1,13 +1,24 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 const Navber = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [activeLink, setActiveLink] = useState('/');
+    const location = useLocation();
+
+    useEffect(() => { 
+        setActiveLink(location.pathname || '/');
+    },[location.pathname]);
     
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+    }
+
+    const handleLinkClick = (path) => {
+        setActiveLink(path);
     }
 
     return (
@@ -27,15 +38,28 @@ const Navber = () => {
 
                 <ul className="hidden md:flex space-x-4 md:space-x-6">
 
-                   <li> <Link to={'/'} className="hover:text-green-500 font-semibold"> Home</Link></li>
-                   <li> <Link to={'Products'} className="hover:text-green-500 font-semibold"> Products</Link></li>
-                   <li> <Link to={'About'} className="hover:text-green-500 font-semibold"> About</Link></li>
-                   <li> <Link to={'Blogs'} className="hover:text-green-500 font-semibold"> Blogs</Link></li>
-                   <li> <Link to={'Contact'} className="hover:text-green-500 font-semibold"> Contact</Link></li>
+                    <li> <Link to={'/'}
+                               onClick={() => handleLinkClick('/')}
+                        className={`${activeLink === '/' ? 'text-purple-950' :'hover:text-green-300'}`}> Home</Link></li>
+                    <li> <Link to={'/Products'}
+                               onClick={() => handleLinkClick('/Products')}
+                        className={`${activeLink === '/Products' ? 'text-purple-950' :'hover:text-green-300'}`}> Products</Link></li>
+                    <li> <Link to={'/About'}
+                               onClick={() => handleLinkClick('/About')}
+                        className={`${activeLink === '/About' ? 'text-purple-950' :'hover:text-green-300'}`} > About</Link></li>
+                    <li> <Link to={'/Blogs'}
+                               onClick={() => handleLinkClick('/Blogs')}
+                        className={`${activeLink === '/Blogs' ? 'text-purple-950' :'hover:text-green-300'}`} > Blogs</Link></li>
+                    <li> <Link to={'/Contact'}
+                                onClick={() => handleLinkClick('/Contact')}
+                        className={`${activeLink === '/Contact' ? 'text-purple-950' :'hover:text-green-300'}`}> Contact</Link></li>
                    
                   
                 </ul>
-                <button className="hidden md:block bg-white text-black px-4 py-1 rounded border-none cursor-pointer hover:bg-slate-400"> Login</button>
+
+                <Link to={'/login'}>
+                    <button className="hidden md:block bg-white text-black px-4 py-1 rounded border-none cursor-pointer hover:bg-slate-400"> Login</button>
+                </Link>
                 
                 {/* mobail menu colaps */}
                 <div className={`md:hidden w-full absolute bg-green-600 top-full left-0 ${isOpen ? 'block' : 'hidden'}`}>
